@@ -4,7 +4,7 @@
  * se sinta livre pra alterar qualquer coisa no meu código adicionar comentários etc, eu vou tentar utilizar o nome das varáveis e metódos
  * ja postos no enunciado porque desta forma ja fica tudo arrumado e nos usamos as mesmas variaveis etc
  * 
- * caracteres de loop ja utilizados: i
+ * caracteres de loop ja utilizados: r,k
  * 
  */
 
@@ -54,8 +54,8 @@ public class FuncoesIniciais{
      */
     public static int sumDigits(String s){
         int sumString = 0;
-            for(int i = 0; i <= s.length();i++){
-                char c = s.charAt(i);
+            for(int r = 0; r <= s.length();r++){
+                char c = s.charAt(r);
                 // aqui foi meio estranho tentar fazer com o parseint mas depois de olhar a doc da classe character eu encontrei
                 // esses dois metodos que podem ser bem uteis mais pra frente 'IsDigit' e 'getNumericValue'
                 if (Character.isDigit(c)){
@@ -64,19 +64,32 @@ public class FuncoesIniciais{
             }
             return sumString; 
     }
-    /*
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
+    /* Funcao countDigitOccurrence conta o número de vezes que um digito aparece na String, isso é útil no caso dos numeros de 1-9
+     * @param 's' captura qualquer string e analisa seus caracteres
+     * @param digito que se pretende contar, como existem entre 1-9 digitos, o valor será comparado em 10 possibilidades
+     * @return numero de vezes que o digito(numero) 'd' aparece na String s
+     * @requires s != null && d>0 && d<=9
      */
     public static int countDigitOccurrence(String s, int d){
-        char d
-        
-        return 0;
+        char digitOccurs = Character.forDigit(d, 10);
+        int count = 0;
+        for(int k = 0; k <s.length(); k++){
+            if(s.charAt(k)==digitOccurs){
+                count++;
+            }
+        }
+        return count;
     }
-
+    /* Funcao logica isFillingChar que define se um caractere pode ou não fazer parte do puzzle,(i.e) no puzzle que só contém espaços pretos 'P'
+     * e espaços brancos que vão ser prenchidos pelos números, é preciso verificar se é um desses caracteres 'P' ou digito de 1-9
+     * @param 'c' caractere a ser filtrado
+     * @return true se o caractere for 'P' ou digito de 1-9
+     */
+    public static boolean isFillingChar(char c){
+            return (c == 'P')||(c > '0' && c <= '9');
+            // isso aqui ficou muito estranho mas depois de pesquisar um pouco, esse é o melhor jeito
+            // da pra comparar um char com um "número" pelo unicode do caractere do numero, entao da pra fazer
+            // comparacao direta pela traducao direta do ascii do numero q e tipo 47 -> 0 ate 56 -> 9, sobe normal
+    }
 
 }
