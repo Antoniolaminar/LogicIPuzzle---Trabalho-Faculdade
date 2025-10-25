@@ -87,7 +87,6 @@ public class FuncoesIniciais{
      */
     public static boolean isFillingChar(char c){
             return (c == 'P')||(c > '0' && c <= '9');
-            // isso aqui ficou muito estranho mas depois de pesquisar um pouco, esse é o melhor jeito
             // da pra comparar um char com um "número" pelo unicode do caractere do numero, entao da pra fazer
             // comparacao direta pela traducao direta do ascii do numero q e tipo 47 -> 0 ate 56 -> 9, sobe normal
     }
