@@ -72,31 +72,6 @@ public static int getIntfactor(int number, int factor){
 
     return resultado;
 }
-       
-// -------- Função: getIntFactor --------
-// a função vai receber dois números inteiros positivos: 'number' e 'factor'
-// Ela vai devolver o número inteiro que multiplicado por 'factor', dá exatamente 'number'.
-// Exemplo: se number = 12 e factor = 3 → retorna 4 (porque 3 × 4 = 12)
-public static int getIntFactor(int number, int factor) {
-
-    // Verifico se os valores são válidos (positivos)
-    if (number <= 0 || factor <= 0) {
-        System.out.println("Os valores devem ser positivos.");
-    }
-
-    // Verifico se 'factor' é realmente um fator inteiro de 'number' isto é se number % factor == 0 
-    if (number % factor != 0) {
-        System.out.println("O valor de 'factor' não é um fator inteiro de 'number'.");
-    }
-
-    // Se passou agr calculamos o valor
-    // O número que multiplicado por 'factor' dá 'number' é: number / factor
-    int resultado = number / factor;
-
-    // Devolver o resultado
-    return resultado;
-}
-
     /** Funcao sumDigits calcula a soma de todos os números dentro d euma string e ignora os seus caracteres, que nao representam numeros por causa de metodos
      * da classe character
      * @param 's' String com caracteres e numeros
