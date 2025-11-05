@@ -111,23 +111,6 @@ public static int countCharOccurence(String s, char c){
     }
     return count;
 }
-          
-    // -------- Função: countCharOccurrence --------
-    // Recebe uma String 's' (não null) e um carácter 'c'
-    // Devolve quantas vezes o carácter 'c' aparece na String
-    public static int countCharOccurrence(String s, char c) {
-        int count = 0; // contador de ocorrências
-
-        // Percorre todos os caracteres da String
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == c) { // se o carácter atual for igual a 'c'
-                count++; // adiciona ao contador
-            }
-        }
-
-        return count; // devolve o total do do contador
-    }
-
     /** Funcao countDigitOccurrence conta o número de vezes que um digito aparece na String, isso é útil no caso dos numeros de 1-9
      * @param 's' captura qualquer string e analisa seus caracteres
      * @param digito que se pretende contar, como existem entre 1-9 digitos, o valor será comparado em 10 possibilidades
@@ -167,22 +150,6 @@ public static boolean hasdigit(String s, int d){
     }
     return false; // se nao encontrou
 }
-    // -------- Função: hasDigit --------
-    // Recebe uma String 's' (não null) e um dígito inteiro 'd' (0-9)
-    // Devolve true se o dígito aparecer em 's', false caso contrário
-    public static boolean hasDigit(String s, int d) {
-        // Converto agr o dígito inteiro para carácter
-        char digitChar = (char) (d + '0'); // ex: 3 -> '3'
-
-        // Percorre todos os caracteres da string
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == digitChar) { // se encontrar o dígito
-                return true; // encontrou ent vai devolver true
-            }
-        }
-
-        return false; // n encontrou ent devolve false
-    }
     /** Funcao de Suporte hasChar faz o mesmo que hasDigit mas para caracteres especificos, feito para facilitar IsValidPuzzleInConstruction
      * @param String s a ser percorrida
      * @param char c caractere especifico que se quer saber se existe na string
@@ -227,5 +194,74 @@ public static boolean hasdigit(String s, int d){
         boolean temPonto = hasChar(spc, '.');
         boolean temP = hasChar(spc, 'P');
         return temP && temPonto;
+    }
+}
+
+
+/**
+ * ..Funçao isFilled
+ * verifica se todas as funçoes de uma string estao preenchidas
+ * se tiver '.' considera-se q a posiçao nao esta preenchida
+ * @param spc String a analisar
+ * @return booleano indicando se todas as posiçoes estao preenchidas
+ * @requires spc != null
+ * @ensures devolve true se nao tiver '.', false caso contrario
+ */
+public static boolean isFilled (String spc) {
+    for(int i = 0; i < spc.length(); i++) {
+        if(spc.charAt(1) == '.') {
+            return false;
+        }
+    }
+     return true;
+}
+
+/**
+ * ..Funçao hasAdjacentPositionWithDifferentDigits..
+ *  verificar se numa grelha com linhas e colunas representada pela string spc existem duas posiçoes adjacentes ( ao lado ou em baixo) com digitos diferentes
+ * @param rows numero de linhas
+ * @param cols numero de colunas
+ * @param spc string com tamanho de rows x cols que representa a grelha
+ * @return true se existirem posiçoes adjacentes com digitos diferentes ou false caso contrario
+ * @requires row > 0 && spc != null && spc.length() == rows*cols
+ */
+public static boolean hasAdjacentPositionWithDifferentDigits(int rows, int cols, String spc) {
+    for(int r= 0; r < rows; r++) {
+        for(int c = 0; c < cols; c++){
+            int pos = r * cols + c; // cada linha tem um nº de colunas, cols, entao andamos r*cols, tipo estamos na linha 1 que tem 4 colunas ( 1*4, quer vai andar 4 casas para a direita e vai parar na linha abaixo) e depois +c, que é a coluna onde estamos
+            //comparar com a posiçao à direita
+            if(c < cols - 1) {
+                if (spc.charAt(pos) != spc.charAt(pos + 1)) {
+                    return true;
+                }
+            }
+            //comparar com a posiçao abaixo
+            if (r < rows -1) {
+                if(spc.charAt(pos) != spc.charAt(pos + cols)) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false; // se nao encontrou digitos diferentes lado a lado
+}
+
+
+/**
+ * ..Funçao PrintPuzzleInConstruction..
+ * imprime uma grelha do puzzle
+ * @param rows numero de linhas
+ * @param cols numero de colunas
+ * @param spc string de tamanho rows*cols que representa o puzzle
+ * @requires rows > 0 && cols > 0 && spc!= null && spc.length()== rows*cols
+ * @ensures imprime spc na forma de grelha
+ */
+public static void printPuzzleInConstruction(int rows, int cols, String spc) {
+    for(r = 0; r < rows; r++){
+        for(c = 0; c < cols; c++){
+            int pos= r * cols + c; // cada linha tem um nº de colunas, cols, entao andamos r*cols, tipo estamos na linha 1 que tem 4 colunas ( 1*4, quer vai andar 4 casas para a direita e vai parar na linha abaixo) e depois +c, que é a coluna onde estamos
+            System.out.print(spc.charAt(pos)+" ");
+        }
+        System.out.println();
     }
 }
