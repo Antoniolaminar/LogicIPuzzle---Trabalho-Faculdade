@@ -259,9 +259,15 @@ public static boolean hasAdjacentPositionWithDifferentDigits(int rows, int cols,
 public static void printPuzzleInConstruction(int rows, int cols, String spc) {
     for(int r = 0; r < rows; r++){
         for(int c = 0; c < cols; c++){
-            int pos= r * cols + c; // cada linha tem um nº de colunas, cols, entao andamos r*cols, tipo estamos na linha 1 que tem 4 colunas ( 1*4, quer vai andar 4 casas para a direita e vai parar na linha abaixo) e depois +c, que é a coluna onde estamos
+            int pos= r * cols + c; // cada linha tem um nº de colunas, cols, entao andamos r*cols,
+            //tipo estamos na linha 1 que tem 4 colunas ( 1*4, quer vai andar 4 casas para a direita e vai parar na linha abaixo)
+            //e depois +c, que é a coluna onde estamos
             System.out.print(spc.charAt(pos)+" ");
         }
         System.out.println();
     }
 }
+
+
+
+
