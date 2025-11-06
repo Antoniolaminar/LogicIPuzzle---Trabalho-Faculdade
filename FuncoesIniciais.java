@@ -138,7 +138,7 @@ public static int countCharOccurence(String s, char c){
  * @ensures devolve true se o digito d ocorre em s; false caso contrario
  */
 
-public static boolean hasdigit(String s, int d){
+public static boolean hasDigit(String s, int d){
     //converto agr o digito inteiro para caracter
     char digitChar = (char) (d + '0'); //tipo 3 passa para '3'
 
@@ -155,7 +155,7 @@ public static boolean hasdigit(String s, int d){
      * @param char c caractere especifico que se quer saber se existe na string
      * @return true se c aparecer em s
     */
-    public static boolean hasChar(String s, char c){
+    public static boolean hasChar(String s,char c){
         for(int m = 0; m<s.length();m++){
             if(c == s.charAt(m)){
                 return true;
@@ -257,8 +257,8 @@ public static boolean hasAdjacentPositionWithDifferentDigits(int rows, int cols,
  * @ensures imprime spc na forma de grelha
  */
 public static void printPuzzleInConstruction(int rows, int cols, String spc) {
-    for(r = 0; r < rows; r++){
-        for(c = 0; c < cols; c++){
+    for(int r = 0; r < rows; r++){
+        for(int c = 0; c < cols; c++){
             int pos= r * cols + c; // cada linha tem um nº de colunas, cols, entao andamos r*cols, tipo estamos na linha 1 que tem 4 colunas ( 1*4, quer vai andar 4 casas para a direita e vai parar na linha abaixo) e depois +c, que é a coluna onde estamos
             System.out.print(spc.charAt(pos)+" ");
         }
