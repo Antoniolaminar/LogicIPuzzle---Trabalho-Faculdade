@@ -460,54 +460,61 @@ public class FuncoesIniciais {
         return true;
     }
 
-}
-
-
-/**
- * ..funçao isValidMove
- * verificar se a jogada é valida ou nao
- * @param spc string que representa o puzzle
- * @param puzzle string com tamanho igual a spc que representa o puzzle(para alguma grelha)
- * @param pos inteiro que representa a posiçao da jogada
- * @param c caracter que representa a açao da jogada
- * @return true se o caracter for uma pista e false caso contrario
- */
-public static boolean isValidMove (String spc, String puzzle, int pos, char c) {
-    if( pos < 0 || pos >= puzzle.length()){ //vemos se a posiçao esta dentro da grelha
-        return false;
-    }
-    if( puzzle.charAt(pos) != '.'){ //agr vemos se a posiçao ja tem uma pista e para isso verificamos se ja tem alguma cena diferente de '.'
-        return false;
-    }
-    if(c != '.' && c != 'P' && !(c >= '1' && c <= '9')){
-        return false; // se n for valido
-    }
-    //vericar agr se for digito, se existe ccomo pista no puzzle
-    if(c >= '1' && c <= '9'){
-        boolean existenopuzzle = false; //começa-se com false pq ainda n se encontrou nenhuma pista
-        for( int i = 0; i < puzzle.length(); i++){
-            if(puzzle.chaAt(i) == c){
-                existenopuzzle = true;
-            }
-        }
-        if(!existenopuzzle){
+    /**
+     * ..funçao isValidMove
+     * verificar se a jogada é valida ou nao
+     * 
+     * @param spc    string que representa o puzzle
+     * @param puzzle string com tamanho igual a spc que representa o puzzle(para
+     *               alguma grelha)
+     * @param pos    inteiro que representa a posiçao da jogada
+     * @param c      caracter que representa a açao da jogada
+     * @return true se o caracter for uma pista e false caso contrario
+     */
+    public static boolean isValidMove(String spc, String puzzle, int pos, char c) {
+        if (pos < 0 || pos >= puzzle.length()) { // vemos se a posiçao esta dentro da grelha
             return false;
         }
+        if (puzzle.charAt(pos) != '.') { // agr vemos se a posiçao ja tem uma pista e para isso verificamos se ja tem
+                                         // alguma cena diferente de '.'
+            return false;
+        }
+        if (c != '.' && c != 'P' && !(c >= '1' && c <= '9')) {
+            return false; // se n for valido
+        }
+        // vericar agr se for digito, se existe ccomo pista no puzzle
+        if (c >= '1' && c <= '9') {
+            boolean existenopuzzle = false; // começa-se com false pq ainda n se encontrou nenhuma pista
+            for (int i = 0; i < puzzle.length(); i++) {
+                if (puzzle.charAt(i) == c) {
+                    existenopuzzle = true;
+                }
+            }
+            if (!existenopuzzle) {
+                return false;
+            }
+        }
+        return true;// se tiver tudo certo
     }
-    return true;// se tiver tudo certo
-}
 
-/**
- * ..Funçao playMove
- * pega numa string da soluçao em construçao(spc) e substitui um dos caracteres dessa string pela jogada (c) na posiçao (pos)
- * @param spc string que representa uma soluçao-puzzle-em-construçao
- * @param puzzle string que se assume que representa um puzzle(para alguma grelha)
- * @param pos inteiro que representa a posiçao da jogada
- * @param c caracter que representa a açao da jogada
- * @return String que representa a soluçao-puzzle-em-construçao que resulta de efetuar a jogada em spc
- */
-public static String playMove( String spc, String puzzle, int pos, char c){
-    StringBuilder sb = new StringBuilder(spc); // criamos um stringBuilder para modificar o texto, isto pq as strings normais sao imutaveis logo n podemos alterá-la
-    sb.setCharAt(pos,c); // por o caracter introduzido na posiçao escolhida
-    return sb.toString();
+    /**
+     * ..Funçao playMove
+     * pega numa string da soluçao em construçao(spc) e substitui um dos caracteres
+     * dessa string pela jogada (c) na posiçao (pos)
+     * 
+     * @param spc    string que representa uma soluçao-puzzle-em-construçao
+     * @param puzzle string que se assume que representa um puzzle(para alguma
+     *               grelha)
+     * @param pos    inteiro que representa a posiçao da jogada
+     * @param c      caracter que representa a açao da jogada
+     * @return String que representa a soluçao-puzzle-em-construçao que resulta de
+     *         efetuar a jogada em spc
+     */
+    public static String playMove(String spc, String puzzle, int pos, char c) {
+        StringBuilder sb = new StringBuilder(spc); // criamos um stringBuilder para modificar o texto, isto pq as
+                                                   // strings normais sao imutaveis logo n podemos alterá-la
+        sb.setCharAt(pos, c); // por o caracter introduzido na posiçao escolhida
+        return sb.toString();
+    }
+
 }
